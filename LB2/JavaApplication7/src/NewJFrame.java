@@ -40,7 +40,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
+        javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
         AddButton = new javax.swing.JButton();
         DeleteButton = new javax.swing.JButton();
         CalculateButton = new javax.swing.JButton();
@@ -113,9 +113,14 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        ReadButton.setText("Clear");
+        ReadButton.setText("Föra in");
+        ReadButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReadButtonActionPerformed(evt);
+            }
+        });
 
-        ClearButton.setText("Clear");
+        ClearButton.setText("Klar");
         ClearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ClearButtonActionPerformed(evt);
@@ -366,6 +371,15 @@ public class NewJFrame extends javax.swing.JFrame {
             module.removeRow(MainTable.getRowCount()-1);
     }//GEN-LAST:event_ClearButtonActionPerformed
 
+    private void ReadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReadButtonActionPerformed
+       DefaultTableModel module = (DefaultTableModel)MainTable.getModel();
+       for(int i = 0; i < OurArray.size(); i++){
+            RecIntegral Node = OurArray.get(i);
+            module.addRow(new Object[]{Node.Top, Node.Lower, Node.Step, null});
+       }
+       
+    }//GEN-LAST:event_ReadButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -437,7 +451,6 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton ReadButton;
     private javax.swing.JTextField Step;
     private javax.swing.JTextField UpperThreshold;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
